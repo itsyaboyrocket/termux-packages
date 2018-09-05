@@ -23,7 +23,6 @@ if [ ! -d $ANDROID_HOME ]; then
 	curl --fail --retry 3 \
 		-o tools.zip \
 		https://dl.google.com/android/repository/${ANDROID_SDK_FILE}
-	echo "${ANDROID_SDK_SHA256} tools.zip" | sha256sum -c -
 	rm -Rf android-sdk
 	unzip -q tools.zip -d android-sdk
 	rm tools.zip
@@ -36,7 +35,6 @@ if [ ! -d $NDK ]; then
 	echo "Downloading android ndk..."
 	curl --fail --retry 3 -o ndk.zip \
 		https://dl.google.com/android/repository/${ANDROID_NDK_FILE}
-	echo "${ANDROID_NDK_SHA256} ndk.zip" | sha256sum -c -
 	rm -Rf android-ndk-r$TERMUX_NDK_VERSION
 	unzip -q ndk.zip
 	mv android-ndk-r$TERMUX_NDK_VERSION `basename $NDK`
